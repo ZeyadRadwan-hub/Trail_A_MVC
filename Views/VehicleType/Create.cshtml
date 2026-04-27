@@ -1,0 +1,47 @@
+﻿@model Trail_A.View_Model.VehicleTypeViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>VehicleType</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="VehicleName" class="control-label"></label>
+                <input asp-for="VehicleName" class="form-control" />
+                <span asp-validation-for="VehicleName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BaseFare" class="control-label"></label>
+                <input asp-for="BaseFare" class="form-control" />
+                <span asp-validation-for="BaseFare" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedByUserId" class="control-label"></label>
+                <select asp-for="CreatedByUserId" class ="form-control">
+                    @foreach(var item in Model.users)
+                    {
+                        <option value="@item.UserId">@item.UserId</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

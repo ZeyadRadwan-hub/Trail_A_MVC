@@ -1,0 +1,84 @@
+﻿@model Trail_A.View_Model.RideViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Ride</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="RideId" />
+            <div class="form-group">
+                <label asp-for="PickUp" class="control-label"></label>
+                <input asp-for="PickUp" class="form-control" />
+                <span asp-validation-for="PickUp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PickOff" class="control-label"></label>
+                <input asp-for="PickOff" class="form-control" />
+                <span asp-validation-for="PickOff" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fare" class="control-label"></label>
+                <input asp-for="Fare" class="form-control" />
+                <span asp-validation-for="Fare" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DriverId" class="control-label"></label>
+                <select asp-for="DriverId" class="form-control">
+                    @foreach (var item in Model.drivers)
+                    {
+                        <option value="@item.DriverId">@item.DriverId</option>
+                    }
+                </select>
+                <span asp-validation-for="DriverId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VehicleId" class="control-label"></label>
+                <select asp-for="VehicleId" class="form-control">
+                    @foreach (var item in Model.vehicleTypes)
+                    {
+                        <option value="@item.VehicleTypeId">@item.VehicleTypeId</option>
+                    }
+                </select>
+                <span asp-validation-for="VehicleId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <select asp-for="UserId" class="form-control">
+                    @foreach (var item in Model.users)
+                    {
+                        <option value="@item.UserId">@item.UserId</option>
+                    }
+                </select>
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

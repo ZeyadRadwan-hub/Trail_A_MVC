@@ -1,0 +1,96 @@
+﻿@model List<Trail_A.Models.Ride>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<form asp-action="Index" method="get">
+    <input type="text" name="Name" />
+    <button type="submit">Search</button>
+</form>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+
+            <th>
+                PickUp
+            </th>
+            <th>
+                PickOff
+            </th>
+            <th>
+                Data
+            </th>
+            <th>
+                Fare
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+                driver
+            </th>
+            <th>
+                vehicleType
+            </th>
+            <th>
+                user
+            </th>
+            <th>
+                Status
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    @item.RideId
+                </td>
+
+            <td>
+                @item.PickUp
+            </td>
+            <td>
+                @item.PickOff
+            </td>
+                <td>
+                    @item.Date
+                </td>
+            <td>
+                @item.Fare
+            </td>
+            <td>
+                @item.Status
+            </td>
+            <td>
+                @item.DriverId
+            </td>
+            <td>
+               @item.VehicleId
+            </td>
+            <td>
+                @item.UserId
+            </td>
+                <td>
+                    @item.Status
+                </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.RideId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.RideId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.RideId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
