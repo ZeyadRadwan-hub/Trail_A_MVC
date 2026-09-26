@@ -1,67 +1,42 @@
 ﻿@model List<Trail_A.Models.Driver>
 
-@{
-    ViewData["Title"] = "Index";
-}
-
-<h1>Index</h1>
+<h2>Drivers</h2>
 
 <form asp-action="Index" method="get">
     <input type="text" name="Name" />
     <button type="submit">Search</button>
 </form>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<a asp-action="Create">Create New</a>
+
 <table class="table">
     <thead>
         <tr>
-            <th>
-                Id
-            </th>
-            <th>
-                Name
-            </th>
-            <th>
-                LicenseNumber
-            </th>
-            <th>
-                Status
-            </th>
-            <th>
-                Phone
-            </th>
-            <th>
-                CreatedByUserId
-            </th>
-            <th></th>
+            <th>DriverId</th>
+            <th>Name</th>
+            <th>LicenseNumber</th>
+            <th>Status</th>
+            <th>Phone</th>
+            <th>CreatedByUserId</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @item.Name
-            </td>
-            <td>
-                @item.LicenseNumber
-            </td>
-            <td>
-                @item.Status
-            </td>
-            <td>
-                @item.Phone
-            </td>
-            <td>
-                @item.CreatedByUserId
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.DriverId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.DriverId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.DriverId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.DriverId</td>
+                <td>@item.Name</td>
+                <td>@item.LicenseNumber</td>
+                <td>@item.Status</td>
+                <td>@item.Phone</td>
+                <td>@item.CreatedByUserId</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.DriverId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.DriverId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.DriverId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

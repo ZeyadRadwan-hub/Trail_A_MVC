@@ -1,36 +1,19 @@
 ﻿@model Trail_A.Models.VehicleType
 
-@{
-    ViewData["Title"] = "Details";
-}
-
-<h1>Details</h1>
-
-<div>
-    <h4>VehicleType</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.VehicleName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.VehicleName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BaseFare)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BaseFare)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.user)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.user.EmailAddress)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.VehicleTypeId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+<h1>VehicleType Details</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>VehicleName</th>
+            <th>BaseFare</th>
+            <th>Created By</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.VehicleName</td>
+            <td>@Model.BaseFare</td>
+            <td>@(Model.user?.EmailAddress)</td>
+        </tr>
+    </tbody>
+</table>

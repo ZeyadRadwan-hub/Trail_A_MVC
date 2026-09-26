@@ -12,7 +12,7 @@ using Trail_A.Database_Context;
 namespace Trail_A.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260426094501_init")]
+    [Migration("20260926115745_init")]
     partial class init
     {
         /// <inheritdoc />
